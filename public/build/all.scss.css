@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=Monoton|VT323';
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
@@ -20,12 +21,20 @@ footer {
   background-color: lightblue;
   clear: both; }
 
+.about {
+  font-size: 2rem; }
+
+.brand {
+  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif; }
+
 .fl {
   box-sizing: border-box;
   float: left;
   text-align: center;
   height: 200px;
-  background-color: lightgrey; }
+  background-color: lightgrey;
+  font-size: 3rem;
+  font-family: 'VT323', monospace; }
 
 .navbuttons {
   margin: 45px; }
@@ -115,7 +124,8 @@ footer {
   font-size: 20rem;
   line-height: 700px;
   right: 50%;
-  left: 50%; }
+  left: 50%;
+  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 #editor {
   position: absolute;

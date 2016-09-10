@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var api = require('./routes/api');
 var livecode = require('./routes/livecode');
 var db = require('./models/index')
+var profile = require('./routes/profile');
 
 var app = express();
 var session = require('express-session')({
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api', api);
 app.use('/livecode', livecode);
+app.use('/profile', profile);
 
 
 // catch 404 and forward to error handler

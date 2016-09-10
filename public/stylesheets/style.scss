@@ -1,9 +1,12 @@
 $primary-color: black ;
 $default-spacing: 15px;
+@import 'https://fonts.googleapis.com/css?family=Monoton|VT323';
+
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
 
 a {
   color: #00B7FF;
@@ -31,12 +34,23 @@ footer {
 
 // helpers
 
+.about {
+  font-size: 2rem;
+}
+
+.brand {
+  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 .fl{
   box-sizing: border-box;
   float: left;
   text-align: center;
   height: 200px;
   background-color: lightgrey;
+  font-size: 3rem;
+  //placeholder font for now
+  font-family: 'VT323', monospace;
 }
 
 .navbuttons{
@@ -142,6 +156,7 @@ footer {
   line-height: 700px;
   right: 50%;
   left: 50%;
+  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 #editor { 
