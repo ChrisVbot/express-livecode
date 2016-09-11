@@ -6,27 +6,29 @@ $(".viewDoc").on("click", function(){
 });
 
 $(".documentTitle").on("keypress", function(e){
-  var docId = $(this).parent().parent().data("live-code");
-  var newTitle = $(this).val();
-  console.log(docId);
-  console.log(newTitle);
-  // // check 
+  var thisDoc = $(this);
+  var docId = thisDoc.parent().parent().data("live-code");
+  var newTitle = thisDoc.html();
   if(e.keyCode === 13){
-
-  //   $.ajax({
-  //     method: 'POST',
-  //     url: '/rename',
-  //     data: {
-  //       docId: docId,
-
-  //     }
-  //   })
-    console.log("saving");
+    e.preventDefault();
+    thisDoc.next().focus();
+    $.ajax({
+      method: 'POST',
+      url: '/profile/rename/',
+      data: {
+        docId: docId,
+        newTitle: newTitle
+      },
+      success: function(data){
+        console.log('Successfully posted');
+        thisDoc.blur().next().focus();
+        return false;
+      }
+    })
   }else{
-    console.log("nothing registerd");
+    console.log("Nothing registered");
   }
-
-})
+});
 
 $(".document").on("click", function(){
   $(".document").not(this).removeClass('highlight');
@@ -35,7 +37,7 @@ $(".document").on("click", function(){
   var docId = $(this).data("live-code");
   console.log(docId);
   $.ajax({
-    url: '/profile/test/',
+    url: '/profile/contributors/',
     method: 'get',
     data: {documentId: docId},
     success: function(data){
@@ -53,25 +55,4 @@ function populateContributors(userArray){
     expandDocument.append(user.username + " ");
   });
 };
-// $('input.userSearch').on('keyup',function(e){
-//   var value = $(this).val() + '%';
-//   $.ajax({
-//     url: '/api/profiles',
-//     method: 'get',
-//     data: {username: value},
-//     success: function(data){
-//       populateSearchForm(data)
-//     },
-//     error: function(){console.log("404 error")}
-//   });
-// });
-// function populateSearchForm(userArray){
-//   $('.foundUsers').empty();
-//   userArray.forEach(function(object){
-//     $('<li>')
-//       .addClass("userButton")
-//       .attr("data-user-id", object.id)
-//       .text(object.username)
-//       .appendTo($('.foundUsers'));
-//   });
-// }
+

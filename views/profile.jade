@@ -1,3 +1,4 @@
+
 extends layout
 block content
 
@@ -20,13 +21,14 @@ block content
           td
             p.documentLanguage= val.language
           td
-            p.documentCreatedAt= val.createdAt
+            p.documentCreatedAt= moment(val.createdAt).format("MMM Do YYYY")
           td
-            p.documentUpdatedAt= val.updatedAt
+            p.documentUpdatedAt= moment(val.updatedAt).format("MMM Do YYYY [at] h:mm:ss a")
           td
               button.viewDoc(data-live-code=val.id)= "LiveCode"
         tr.hidden
           td.expand-document="put new stuff here"
           
   script(src="/javascripts/profile.js")
+
   

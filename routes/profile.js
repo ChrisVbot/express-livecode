@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models/index");
+var moment = require('moment');
 
 /* GET users listing. */
 
@@ -11,10 +12,12 @@ router.get('/', function(req, res, next) {
       user
         .getDocuments({})
         .then(function(docs){
-          var username = user.username;
-          var docs = docs.map(doc => doc.dataValues);
+          var username = user.username;;
+          var docs = docs.map(doc => 
+            doc.dataValues
+            );
           console.log(docs);
-          res.render('profile', {docs: docs, username: req.session.username });
+          res.render('profile', {docs: docs, username: req.session.username, moment: moment });
       });
     })
     .catch(function(err){
@@ -22,8 +25,26 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/rename', function(req,res,next) {
+  var title = req.body
+  console.log(req.body);
+  db.Document
+    .findById(title.docId)
+    .then(function(doc){
+      doc.updateAttributes({
+        name: title.newTitle
+      })
+    })
+    .then(function(){
+      res.sendStatus(200);
+    })
+    .catch(function(err){
+      res.sendStatus(500);
+    });
+});
 
-router.get('/test', function(req, res){
+
+router.get('/contributors', function(req, res){
   var docId = req.query.documentId
   db.Document
     .findById(docId, {
