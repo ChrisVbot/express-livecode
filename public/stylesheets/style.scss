@@ -1,12 +1,9 @@
 $primary-color: black ;
-$default-spacing: 15px;
-@import 'https://fonts.googleapis.com/css?family=Monoton|VT323';
 
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 
 a {
   color: #00B7FF;
@@ -24,50 +21,114 @@ ul {
   list-style-type:none;
 }
 
-footer {
-  left: 0;
-  right: 0;
-  height: 50px;
-  background-color: lightblue; 
-  clear: both;
-}
-
 // helpers
 
-.about {
-  font-size: 2rem;
+.commentBar {
+  background-color: white;
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  right: 0%;
+  left: 175%;
+  bottom: 0%;
+  z-index: 3;
 }
 
-.brand {
-  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif;
+.commentForm {
+  position: absolute;
+  bottom: 2%;
+}
+
+.comments {
+  overflow: scroll;
+  position: absolute;
+  top:0px;
+  bottom: 30%;
+}
+
+.commentTemplate {
+  display:none;
+}
+
+.comment > p{
+  font-family: monospace;
+  color: blue;
+}
+
+.commentForm > input,
+.commentForm > textarea,
+.commentForm > button {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.documentBar {
+  border: 1px solid black;
+  position:absolute;
+  overflow: scroll;
+  top:100%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  z-index: 10;
+  tr:hover {
+    background-color: #95d3e6;
+  }
+}
+
+.documentData {
+  label {
+    text-transform: uppercase;
+    li {
+      font-weight: normal;
+      text-transform: none;
+    }
+  }
+}
+
+#editor { 
+  border: 1px solid black;
+  position: absolute;
+  top: 60px;
+  right:25%;
+  bottom: 0%;
+  left: 0%;
+  z-index: 1;
+}
+
+.errorMessage {
+  background-color: #ff8e8e;
+  display:none;
+}
+
+.findUsers > input {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .fl{
-  box-sizing: border-box;
-  float: left;
-  text-align: center;
-  height: 200px;
-  background-color: lightgrey;
-  font-size: 3rem;
-  //placeholder font for now
-  font-family: 'VT323', monospace;
+  float:left;
 }
 
-.navbuttons{
-  margin: 3*($default-spacing);
-}
-
-.clearfix {
-  clear:both;
+.foundUsers {
+  list-style-type: none;
+  margin-left: 0;
+  li {
+    border-radius: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    height: 38px;
+    &:hover {
+      background-color: #95d3e6;
+    }
+  }
 }
 
 .welcome {
   color: white;
   font-size: 20rem;
-}
-
-.commentTemplate {
-  display:none;
 }
 
 .overlay {
@@ -88,15 +149,14 @@ footer {
   padding: 10px 10px;
   top: 0;
   left: 0;
-  margin: -10px 0px 0px 0px;
-  z-index: 2;
-}
-
-.navbar > ul {
-  display: inline-block;
-  height: 40px;
-  list-style-type: none;
-  margin: 0px;
+  width: 100%;
+  z-index: 5;
+  ul {
+    display: inline-block;
+    height: 40px;
+    list-style-type: none;
+    margin: 0px;
+  }
 }
 
 .navbar > ul.navbar-right{
@@ -124,7 +184,7 @@ footer {
   position: absolute;
   width: 250px;
   text-align: center;
-  z-index: 3;
+  z-index: 10;
 }
 
 .registerForm > input {
@@ -139,41 +199,6 @@ footer {
   margin-right: 0px; 
 }
 
-.filter{
-  position: absolute;
-  height: 700px;
-  width: 100%;
-  left: 0;
-  right: 0;
-  background-color:rgba(0,0,75,0.7);
-  z-index: 5;
-}
-
-.filter>span {
-  display: block;
-  color:white;
-  font-size: 20rem;
-  line-height: 700px;
-  right: 50%;
-  left: 50%;
-  font-family: 'Monoton', "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-#editor { 
-  position: absolute;
-  top: 60px;
-  right:25%;
-  bottom: 0%;
-  left: 0%;
-  font-size: 50px;
-}
-
-#editor.banner {
-  right:0%;
-  bottom:0%;
-  top: 52px;
-}
-
 .sidebar {
   padding: 10px;
   position: absolute;
@@ -183,73 +208,14 @@ footer {
   bottom: 0%;
 }
 
-.removeUser {
-  margin-right: 20px;
-  float: right;
-}
-
 .sidebar > ul {
   list-style-type: none;
 }
 
-.commentBar {
-  background-color: white;
-  padding: 10px;
-  position: absolute;
-  top: 60px;
-  right: 0%;
-  left: 175%;
-  bottom: 0%;
-  z-index: 3;
+.removeUser {
+  margin-right: 20px;
+  float: right;
 }
-
-.comments {
-  overflow: scroll;
-  position: absolute;
-  top:0px;
-  bottom: 30%;
-}
-
-.commentForm {
-  position: absolute;
-  bottom: 2%;
-}
-
-.comment > p{
-  font-family: monospace;
-  color: blue;
-}
-
-.commentForm > input,
-.commentForm > textarea,
-.commentForm > button {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.findUsers > input {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.foundUsers {
-  list-style-type: none;
-  margin-left: 0;
-}
-
-.foundUsers > li {
-  border-radius: 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 100%;
-  height: 38px;
-}
-
-.foundUsers > li:hover {
-  background-color: #95d3e6;
-}
-
 
 .highlight {
   background: #fafafa;

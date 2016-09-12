@@ -11,14 +11,11 @@ block content
     button.register= "Register!"
     a.closeRegisterForm(style="margin-left:20px")= "Cancel"
 
-  div.filter
-    span= "Live-Code"
-  div.hero#editor.banner= randomDoc.content
   div.hero
   
   div.navbuttons
     div.fl.four.columns= "Connect"
-      p.="Add collaborators with the click of a button"
+      p="Add collaborators with the click of a button"
     div.fl.four.columns= "Hack"
       p="Write or paste code directly in the browser"
     div.fl.four.columns= "Comment"
@@ -31,4 +28,5 @@ block content
   script(src="https://cdn.socket.io/socket.io-1.4.5.js")
   script(src="javascripts/index.js")
   script(src="/plugins/ace-builds-master/src/ace.js")
+
     

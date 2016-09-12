@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models/index");
-var moment = require('moment');
+var moment = require('moment')
 
 /* GET users listing. */
 
@@ -16,8 +16,7 @@ router.get('/', function(req, res, next) {
           var docs = docs.map(doc => 
             doc.dataValues
             );
-          console.log(docs);
-          res.render('profile', {docs: docs, username: req.session.username, moment: moment });
+          res.render('profile', {docs: docs, username: req.session.username, moment});
       });
     })
     .catch(function(err){
