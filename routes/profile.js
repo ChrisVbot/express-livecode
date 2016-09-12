@@ -26,13 +26,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/rename', function(req,res,next) {
   var title = req.body
-  console.log(req.body);
   db.Document
     .findById(title.docId)
     .then(function(doc){
-      doc.updateAttributes({
-        name: title.newTitle
-      })
+      if (doc.OwnerId === req.session.user_id){
+        doc.updateAttributes({
+          name: title.newTitle
+        })
+      }else{
+        console.log("Only owners can edit title")
+      }
     })
     .then(function(){
       res.sendStatus(200);

@@ -1,6 +1,9 @@
 
 extends layout
 block content
+  .contributorForm= "Contributors:"
+    ol.contributors
+    a.closeContributorForm(style="margin-left: 20px")= "Close"
 
 
   a.button(href="/livecode/new")= "New Document"
@@ -27,8 +30,6 @@ block content
             p.documentUpdatedAt= moment(val.updatedAt).format("MMM Do YYYY [at] h:mm:ss a")
           td
               button.viewDoc(data-live-code=val.id)= "LiveCode"
-        tr.hidden
-          td.expand-document="put new stuff here"
           
   script(src="/javascripts/profile.js")
 

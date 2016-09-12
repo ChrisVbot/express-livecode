@@ -10,6 +10,31 @@ editor.$blockScrolling = Infinity;
 editor.setTheme('ace/theme/dreamweaver');
 editSession.setMode("ace/mode/javascript");
 
+$(".mainDocumentTitle").on("keypress", function(e){
+  var thisDoc = $("#documentMeta").data("document-id");
+  var newTitle = $('.mainDocumentTitle').html();
+  if(e.keyCode === 13){
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/profile/rename',
+      data: {
+        docId: thisDoc,
+        newTitle: newTitle
+      },
+      success: function(data){
+        console.log('Successfully posted new title');
+        $('.mainDocumentTitle').blur().next().focus();
+        return false;
+      },
+      error: function(){
+        console.log("Failed to update title")
+      }
+      })
+    }
+  })
+
+
 // TODO: load document data into the editor
 function loadNewDocument(newDoc){
   $("#editor").animate({opacity: 0}, 1000, function(){

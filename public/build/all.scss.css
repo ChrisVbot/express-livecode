@@ -137,7 +137,7 @@ ul {
 .navbar > ul > li > button {
   margin-bottom: 0px; }
 
-.registerForm {
+.registerForm, .contributorForm {
   background-color: white;
   border-radius: 10px;
   border: 2px solid grey;

@@ -45,7 +45,7 @@ block content
         button.u-full-width.errorMessage= "This is an error message"
     ul.documentData
       label="Title"
-        li= doc.name
+        li.mainDocumentTitle(contentEditable="true")= doc.name
       label="Created On"
         li= moment(doc.createdAt).format("MMM Do YYYY [at] h:mm:ss a")
         moment(val.createdAt).format("MMM Do YYYY")

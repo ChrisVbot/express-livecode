@@ -33,9 +33,9 @@ $(".documentTitle").on("keypress", function(e){
 $(".document").on("click", function(){
   $(".document").not(this).removeClass('highlight');
   $(this).toggleClass('highlight');
-  $(this).next().toggleClass('show');
+  $('.overlay').fadeIn();
+  $('.contributorForm').animate({top: "150px"}, 500);
   var docId = $(this).data("live-code");
-  console.log(docId);
   $.ajax({
     url: '/profile/contributors/',
     method: 'get',
@@ -47,12 +47,16 @@ $(".document").on("click", function(){
   })
 });
 
+ $('.closeContributorForm').on("click", function(){
+    $('.overlay').fadeOut();
+    $('.contributorForm').animate({top: "-1000px"}, 500);
+  });
+
 function populateContributors(userArray){
-  var expandDocument = $('.expand-document')
-  expandDocument.empty();
-  expandDocument.append("Contributors: ");
+  var contributors = $('.contributors');
+  contributors.empty();
   userArray.forEach(function(user){
-    expandDocument.append(user.username + " ");
+  contributors.append("<li>" + user.username + " " + "</li>");
   });
 };
 
